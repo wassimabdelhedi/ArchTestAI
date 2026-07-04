@@ -1,0 +1,20 @@
+<!-- Titre de la page -->
+<h1>Docker Mini Project</h1>
+
+<!-- Bouton pour appeler l'API backend -->
+<button onclick="fetchData()">Call API</button>
+
+<script>
+/*
+  Fonction JavaScript :
+  - appelle l'API backend Docker
+  - affiche le résultat dans une popup
+*/
+function fetchData() {
+  fetch("http://localhost:3000")
+    .then(res => res.text())
+    .then(data => {
+      alert(data); // affichage réponse backend
+    });
+}
+</script>

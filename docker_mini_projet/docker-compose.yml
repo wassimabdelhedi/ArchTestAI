@@ -1,0 +1,34 @@
+# Version de Docker Compose
+version: "3.8"
+
+# Déclaration des services (conteneurs)
+services:
+
+  # Service backend Node.js
+  backend:
+    # Construction à partir du dossier backend
+    build: ./backend
+
+    # Mapping des ports (local:conteneur)
+    ports:
+      - "3002:3000"
+      # Démarrer MongoDB avant backend
+    depends_on:
+      - mongo
+
+  # Service base de données MongoDB
+  mongo:
+    # Image officielle MongoDB
+    image: mongo
+
+    # Exposer le port MongoDB
+    ports:
+      - "27017:27017"
+
+    # Volume pour garder les données même après arrêt du container
+    volumes:
+      - mongo_data:/data/db
+
+# Déclaration des volumes Docker
+volumes:
+  mongo_data:   
