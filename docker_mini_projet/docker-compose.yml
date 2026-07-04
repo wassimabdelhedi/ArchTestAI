@@ -5,12 +5,12 @@ version: "3.8"
 services:
 
   users:
-    build: ./users-service
+    build: ./microservices/users-service
     ports:
       - "3001:3000"
 
   orders:
-    build: ./orders-service
+    build: ./microservices/orders-service
     ports:
       - "3002:3000"
       
