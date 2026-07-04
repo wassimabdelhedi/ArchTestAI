@@ -4,18 +4,16 @@ version: "3.8"
 # Déclaration des services (conteneurs)
 services:
 
-  # Service backend Node.js
-  backend:
-    # Construction à partir du dossier backend
-    build: ./backend
+  users:
+    build: ./users-service
+    ports:
+      - "3001:3000"
 
-    # Mapping des ports (local:conteneur)
+  orders:
+    build: ./orders-service
     ports:
       - "3002:3000"
-      # Démarrer MongoDB avant backend
-    depends_on:
-      - mongo
-
+      
   # Service base de données MongoDB
   mongo:
     # Image officielle MongoDB
